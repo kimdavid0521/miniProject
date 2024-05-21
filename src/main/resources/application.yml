@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: glory76tymj
+    url: jdbc:mysql://127.0.0.1:3306/mini
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        hbm2ddl:
+          auto: update
