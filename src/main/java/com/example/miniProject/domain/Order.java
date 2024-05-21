@@ -12,9 +12,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Table(name = "orders") //테이블 이름 따로 지정해주지 않으면 관례로 그냥 order가 됨.
 public class Order extends BaseEntity {
 
