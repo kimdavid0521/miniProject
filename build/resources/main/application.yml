@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: glory76tymj
-    url: jdbc:mysql://127.0.0.1:3306/mini
+    url: jdbc:mysql://127.0.0.1:3306/miniProject
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     properties:

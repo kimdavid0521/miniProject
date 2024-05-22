@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.miniProject.MiniProjectApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-21T08:40:14" hostname="gimtaeyeong-MacBookPro.local" time="0.461">
+<testsuite name="com.example.miniProject.service.MemberServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-05-22T05:43:00" hostname="gimtaeyeong-MacBookPro.local" time="0.808">
   <properties/>
-  <testcase name="contextLoads()" classname="com.example.miniProject.MiniProjectApplicationTests" time="0.461"/>
-  <system-out><![CDATA[17:40:11.099 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.miniProject.MiniProjectApplicationTests]: MiniProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:40:11.164 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.miniProject.MiniProjectApplication for test class com.example.miniProject.MiniProjectApplicationTests
+  <testcase name="memberJoinTest()" classname="com.example.miniProject.service.MemberServiceTest" time="0.808">
+    <failure message="org.springframework.dao.InvalidDataAccessResourceUsageException: JDBC exception executing SQL [/* select m from Member m where m.name = :name */ select m1_0.member_id,m1_0.city,m1_0.street,m1_0.zipcode,m1_0.created_at,m1_0.name,m1_0.updated_at from member m1_0 where m1_0.name=?] [Unknown column 'm1_0.member_id' in 'field list'] [n/a]; SQL [n/a]" type="org.springframework.dao.InvalidDataAccessResourceUsageException">org.springframework.dao.InvalidDataAccessResourceUsageException: JDBC exception executing SQL [/* select m from Member m where m.name = :name */ select m1_0.member_id,m1_0.city,m1_0.street,m1_0.zipcode,m1_0.created_at,m1_0.name,m1_0.updated_at from member m1_0 where m1_0.name=?] [Unknown column 'm1_0.member_id' in 'field list'] [n/a]; SQL [n/a]
+	at app//org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:277)
+	at app//org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at app//org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550)
+	at app//org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at app//org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335)
+	at app//org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at app//org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at app//org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
+	at app//com.example.miniProject.repository.MemberRepository$$SpringCGLIB$$0.findByName(&lt;generated&gt;)
+	at app//com.example.miniProject.service.MemberService.validateDuplicateMember(MemberService.java:36)
+	at app//com.example.miniProject.service.MemberService.join(MemberService.java:29)
+	at java.base@21.0.2/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base@21.0.2/java.lang.reflect.Method.invoke(Method.java:580)
+	at app//org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at app//org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at app//org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at app//org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392)
+	at app//org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at app//org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at app//org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
+	at app//com.example.miniProject.service.MemberService$$SpringCGLIB$$0.join(&lt;generated&gt;)
+	at app//com.example.miniProject.service.MemberServiceTest.memberJoinTest(MemberServiceTest.java:28)
+	at java.base@21.0.2/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.2/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: org.hibernate.exception.SQLGrammarException: JDBC exception executing SQL [/* select m from Member m where m.name = :name */ select m1_0.member_id,m1_0.city,m1_0.street,m1_0.zipcode,m1_0.created_at,m1_0.name,m1_0.updated_at from member m1_0 where m1_0.name=?] [Unknown column 'm1_0.member_id' in 'field list'] [n/a]
+	at app//org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66)
+	at app//org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at app//org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at app//org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at app//org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:265)
+	at app//org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167)
+	at app//org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:218)
+	at app//org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:98)
+	at app//org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19)
+	at app//org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:66)
+	at app//org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:202)
+	at app//org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33)
+	at app//org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:209)
+	at app//org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83)
+	at app//org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76)
+	at app//org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65)
+	at app//org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:137)
+	at app//org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:362)
+	at app//org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:303)
+	at app//org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:509)
+	at app//org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:427)
+	at app//org.hibernate.query.Query.getResultList(Query.java:120)
+	at app//com.example.miniProject.repository.MemberRepository.findByName(MemberRepository.java:41)
+	at java.base@21.0.2/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base@21.0.2/java.lang.reflect.Method.invoke(Method.java:580)
+	at app//org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at app//org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at app//org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at app//org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 23 more
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'm1_0.member_id' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:246)
+	... 48 more
+</failure>
+  </testcase>
+  <system-out><![CDATA[14:42:57.032 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.miniProject.service.MemberServiceTest]: MemberServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:42:57.108 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.miniProject.MiniProjectApplication for test class com.example.miniProject.service.MemberServiceTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,23 +86,23 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2024-05-21T17:40:11.461+09:00  INFO 62580 --- [miniProject] [    Test worker] c.e.m.MiniProjectApplicationTests        : Starting MiniProjectApplicationTests using Java 21.0.2 with PID 62580 (started by kimtaeyoung in /Users/kimtaeyoung/Desktop/miniSideProject/miniProject)
-2024-05-21T17:40:11.462+09:00  INFO 62580 --- [miniProject] [    Test worker] c.e.m.MiniProjectApplicationTests        : No active profile set, falling back to 1 default profile: "default"
-2024-05-21T17:40:11.952+09:00  INFO 62580 --- [miniProject] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-05-21T17:40:11.966+09:00  INFO 62580 --- [miniProject] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
-2024-05-21T17:40:12.286+09:00  INFO 62580 --- [miniProject] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-05-21T17:40:12.330+09:00  INFO 62580 --- [miniProject] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-05-21T17:40:12.352+09:00  INFO 62580 --- [miniProject] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-05-21T17:40:12.508+09:00  INFO 62580 --- [miniProject] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-05-21T17:40:12.527+09:00  INFO 62580 --- [miniProject] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-05-21T17:40:12.531+09:00  WARN 62580 --- [miniProject] [    Test worker] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-2024-05-21T17:40:12.824+09:00  INFO 62580 --- [miniProject] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9bf63d2
-2024-05-21T17:40:12.825+09:00  INFO 62580 --- [miniProject] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-05-21T17:40:13.665+09:00  INFO 62580 --- [miniProject] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-22T14:42:57.356+09:00  INFO 67116 --- [miniProject] [    Test worker] c.e.m.service.MemberServiceTest          : Starting MemberServiceTest using Java 21.0.2 with PID 67116 (started by kimtaeyoung in /Users/kimtaeyoung/Desktop/miniSideProject/miniProject)
+2024-05-22T14:42:57.357+09:00  INFO 67116 --- [miniProject] [    Test worker] c.e.m.service.MemberServiceTest          : No active profile set, falling back to 1 default profile: "default"
+2024-05-22T14:42:57.737+09:00  INFO 67116 --- [miniProject] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-22T14:42:57.755+09:00  INFO 67116 --- [miniProject] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2024-05-22T14:42:58.089+09:00  INFO 67116 --- [miniProject] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-22T14:42:58.135+09:00  INFO 67116 --- [miniProject] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-22T14:42:58.164+09:00  INFO 67116 --- [miniProject] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-22T14:42:58.333+09:00  INFO 67116 --- [miniProject] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-22T14:42:58.351+09:00  INFO 67116 --- [miniProject] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-22T14:42:58.354+09:00  WARN 67116 --- [miniProject] [    Test worker] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2024-05-22T14:42:58.626+09:00  INFO 67116 --- [miniProject] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f68756d
+2024-05-22T14:42:58.627+09:00  INFO 67116 --- [miniProject] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-22T14:42:59.418+09:00  INFO 67116 --- [miniProject] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: 
     alter table member 
        add column member_id bigint not null auto_increment
-2024-05-21T17:40:13.739+09:00  WARN 62580 --- [miniProject] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
+2024-05-22T14:42:59.487+09:00  WARN 67116 --- [miniProject] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
     alter table member 
        add column member_id bigint not null auto_increment" via JDBC [Incorrect table definition; there can be only one auto column and it must be defined as a key]
 
@@ -180,7 +253,7 @@ Hibernate:
        add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
        foreign key (member_id) 
        references member (member_id)
-2024-05-21T17:40:13.786+09:00  WARN 62580 --- [miniProject] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
+2024-05-22T14:42:59.531+09:00  WARN 67116 --- [miniProject] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
     alter table orders 
        add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
        foreign key (member_id) 
@@ -329,16 +402,36 @@ Caused by: java.sql.SQLException: Failed to add the foreign key constraint. Miss
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
 	... 127 common frames omitted
 
-2024-05-21T17:40:13.795+09:00  INFO 62580 --- [miniProject] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-05-21T17:40:13.998+09:00  WARN 62580 --- [miniProject] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-05-21T17:40:14.236+09:00  WARN 62580 --- [miniProject] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+2024-05-22T14:42:59.537+09:00  INFO 67116 --- [miniProject] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-22T14:42:59.721+09:00  WARN 67116 --- [miniProject] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-22T14:42:59.970+09:00  WARN 67116 --- [miniProject] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 42ba3070-68ee-43f3-b7b5-b6f93699b7c1
+Using generated security password: 0c6c35ad-23c7-406e-8dc8-32fb0b052e40
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2024-05-21T17:40:14.304+09:00  INFO 62580 --- [miniProject] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6527f68a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@741687d4, org.springframework.security.web.context.SecurityContextHolderFilter@529fda9f, org.springframework.security.web.header.HeaderWriterFilter@70313b0b, org.springframework.web.filter.CorsFilter@77b0ff24, org.springframework.security.web.csrf.CsrfFilter@29becf8b, org.springframework.security.web.authentication.logout.LogoutFilter@58397dd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6c96dc5c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6557dcea, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3958e148, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5e89e527, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d0e46dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@318353, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6391d34f, org.springframework.security.web.access.ExceptionTranslationFilter@7fecc26f, org.springframework.security.web.access.intercept.AuthorizationFilter@66978c15]
-2024-05-21T17:40:14.343+09:00  INFO 62580 --- [miniProject] [    Test worker] c.e.m.MiniProjectApplicationTests        : Started MiniProjectApplicationTests in 3.073 seconds (process running for 3.969)
+2024-05-22T14:43:00.040+09:00  INFO 67116 --- [miniProject] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@41f84bb1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5013c6bc, org.springframework.security.web.context.SecurityContextHolderFilter@5da16ed6, org.springframework.security.web.header.HeaderWriterFilter@7fecc26f, org.springframework.web.filter.CorsFilter@6527f68a, org.springframework.security.web.csrf.CsrfFilter@7d453075, org.springframework.security.web.authentication.logout.LogoutFilter@522221e1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2c9430c6, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@72ea5674, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@741687d4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@314407dd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@529fda9f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b8f5aa4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77b0ff24, org.springframework.security.web.access.ExceptionTranslationFilter@7b897456, org.springframework.security.web.access.intercept.AuthorizationFilter@549b26d7]
+2024-05-22T14:43:00.082+09:00  INFO 67116 --- [miniProject] [    Test worker] c.e.m.service.MemberServiceTest          : Started MemberServiceTest in 2.879 seconds (process running for 3.617)
+Hibernate: 
+    /* select
+        m 
+    from
+        Member m 
+    where
+        m.name = :name */ select
+            m1_0.member_id,
+            m1_0.city,
+            m1_0.street,
+            m1_0.zipcode,
+            m1_0.created_at,
+            m1_0.name,
+            m1_0.updated_at 
+        from
+            member m1_0 
+        where
+            m1_0.name=?
+2024-05-22T14:43:00.886+09:00  WARN 67116 --- [miniProject] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1054, SQLState: 42S22
+2024-05-22T14:43:00.886+09:00 ERROR 67116 --- [miniProject] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Unknown column 'm1_0.member_id' in 'field list'
 ]]></system-out>
   <system-err><![CDATA[Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
 WARNING: A Java agent has been loaded dynamically (/Users/kimtaeyoung/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.13/979ce25f7d3096a2e82214ba7dc972a05ce7a171/byte-buddy-agent-1.14.13.jar)
