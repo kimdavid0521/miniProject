@@ -27,4 +27,9 @@ public class OrderItem {
     private Integer orderPrice;
 
     private Integer count;
+
+    //주문 취소시 재고 원복 로직
+    public void cancle() {
+        getItem().addStock(count);
+    }
 }
