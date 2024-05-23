@@ -28,8 +28,23 @@ public class OrderItem {
 
     private Integer count;
 
+    //생성 메서드
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem; //오더 아이템을 생성하면서 재고까지 같이 까주는것
+    }
     //주문 취소시 재고 원복 로직
     public void cancle() {
         getItem().addStock(count);
+    }
+
+    //주문 수량과 주문 량을 곱한 최종 가격(총 가격 조회시 필요함)
+    public int totalPrice() {
+        return getOrderPrice() * getCount();
     }
 }

@@ -71,7 +71,7 @@ public class Order extends BaseEntity {
 
     //비즈니스 로직
     //주문 취소 로직
-    public void cancle() {
+    public void cancleOrder() {
         if(delivery.getDeliveryStatus() == DeliveryStatus.AFTERDELIVERY) {
             throw new IllegalStateException("이미 배송이 완료된 상품은 취소가 불가능합니다");
         }
@@ -81,4 +81,16 @@ public class Order extends BaseEntity {
             orderItem.cancle();
         }
     }
+
+    //전체 주문 가격 조회
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (OrderItem orderItem: orderItems) {
+            totalPrice = totalPrice + orderItem.totalPrice(); //각 주문 아이템들의 가격을 더해줘서 리턴(여기서 totalPrice는 주문아이템에서 주문 아이템 곱하기 수량을 리턴해주는것
+        }
+        return totalPrice;
+    }
+
+
+
 }
