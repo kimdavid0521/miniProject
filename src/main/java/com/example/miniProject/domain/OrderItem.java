@@ -6,9 +6,6 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 public class OrderItem {
 
     @Id
@@ -35,8 +32,8 @@ public class OrderItem {
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
 
-        item.removeStock(count);
-        return orderItem; //오더 아이템을 생성하면서 재고까지 같이 까주는것
+        item.removeStock(count); //오더 아이템을 생성하면서 재고까지 같이 까주는것
+        return orderItem;
     }
     //주문 취소시 재고 원복 로직
     public void cancle() {
