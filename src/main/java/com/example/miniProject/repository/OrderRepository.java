@@ -30,4 +30,8 @@ public class OrderRepository {
                 .getResultList();
         return orderList;
     }
+
+    //오더 동적 쿼리로 조회
+
+
 }
